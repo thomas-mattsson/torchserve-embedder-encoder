@@ -1,4 +1,3 @@
-import sentence_transformers 
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
 # Sentences we want sentence embeddings for
@@ -13,11 +12,12 @@ model.encode(sentences=sentences, normalize_embeddings=True, convert_to_tensor= 
 print("Sentence embeddings has been computed successfully, the model is working!")
 
 # We can now dump the model on disk
-model.save("./embedder")
+model.save("./embedder_model_files")
 
 question = "how are you doing?"
 model = CrossEncoder("cross-encoder/ms-marco-TinyBERT-L-2-v2")
 inputs = [[question, sentence] for sentence in sentences]
 out = model.predict(inputs)
-print(out)
-model.save("./cross_encoder")
+print("Cross encoder is working!")
+
+model.save("./cross_encoder_model_files")

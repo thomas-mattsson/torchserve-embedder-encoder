@@ -5,13 +5,15 @@ WORKDIR /usr/app
 ADD requirements.txt .
 RUN pip install -r requirements.txt
 
-ADD dump_model.py .
-RUN python dump_model.py
+ADD dump_models.py .
+RUN python dump_models.py
 
-COPY handlers ./
-ADD scripts/create-archive.sh scripts/create-archive.sh
+ADD handlers/cross_encoder/handler.py handlers/cross_encoder/handler.py
+ADD handlers/embedding/handler.py handlers/embedding/handler.py
 
-RUN ./scripts/create-archive.sh
+ADD scripts/create-archives.sh scripts/create-archives.sh
+
+RUN ./scripts/create-archives.sh
 
 # Production image
 FROM ghcr.io/alexgseymour/torch-serve-arm64:latest
