@@ -23,7 +23,7 @@ There are two ways to test the server, by running it as a process or as a docker
 First, make sure you have docker installed.
 
 ```make
-docker run -p 8080:8080 -it ghcr.io/clems4ever/torchserve-all-minilm-l6-v2:latest
+docker run -p 8080:8080 -it ghcr.io/alexgseymour/torch-serve-embedder-encoder-x86:latest
 ```
 
 Then, go to [Usage](#usage) to check how to use the service.
