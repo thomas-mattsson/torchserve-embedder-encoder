@@ -9,7 +9,6 @@ from sentence_transformers import SentenceTransformer
 logger = logging.getLogger(__name__)
 logger.info("Transformers version %s", sentence_transformers.__version__)
 
-
 class ModelHandler(BaseHandler):
     def initialize(self, context):
         """
@@ -83,11 +82,10 @@ class ModelHandler(BaseHandler):
         Returns:
             the tensor containing the batch embeddings.
         """
-        # print(inputs)
 
         text_embeddings = self.model.encode(texts,
                                            normalize_embeddings=True,
-                                           convert_to_tensor= True,
+                                           convert_to_tensor=True,
                                            device=self.device)
 
         logger.info('Embeddings successfully computed')

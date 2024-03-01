@@ -3,9 +3,12 @@ FROM pytorch/torchserve AS builder
 
 WORKDIR /usr/app
 ADD requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 ADD dump_models.py .
+USER root
+RUN chmod a+w .
+USER model-server
 RUN python dump_models.py
 
 ADD handlers/cross_encoder/handler.py handlers/cross_encoder/handler.py
@@ -19,7 +22,7 @@ RUN ./scripts/create-archives.sh
 FROM pytorch/torchserve
 
 ADD requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 ADD docker/entrypoint.sh entrypoint.sh
 ADD scripts/start-torchserve.sh start-torchserve.sh
