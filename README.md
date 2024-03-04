@@ -1,10 +1,13 @@
-# Running all-MiniLM-L6-v2 with TorchServe 
+# Running multilingual-e5-small and mmarco-mMiniLMv2-L12-H384-v1 with TorchServe 
 
 This repository contains everything needed to deploy a production-ready service for
 computing sentence similarity embeddings using the model
-[all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) and TorchServe.
+[multilingual-e5-small](https://huggingface.co/intfloat/multilingual-e5-small) and TorchServe.
 Those embeddings can then be used in combination with a vector database like Pinecone, Milvus,
 Weaviate or Qdrant.
+
+A service for doing cross-encoding using [mmarco-mMiniLMv2-L12-H384-v1](https://huggingface.co/jeffwan/mmarco-mMiniLMv2-L12-H384-v1)
+is also included.
 
 This repository has been created because there was no simple example in the torchserve repository
 for deploying a huggingface model for sentence similarity. The closest I could find was resources

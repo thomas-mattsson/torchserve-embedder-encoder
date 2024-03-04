@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
 # Sentences we want sentence embeddings for
-sentences = ['Detta är en exempelmening', 'Det är bra väder idag']
+sentences = ['This is an example sentence', 'Each sentence is converted']
 
 model = SentenceTransformer('intfloat/multilingual-e5-small')
 query_instruction = "Represent the query for retrieval: "
@@ -15,8 +15,8 @@ else:
 # We can now dump the model on disk
 model.save("./embedder_model_files")
 
-question = "Hur är vädret?"
-model = CrossEncoder("intfloat/multilingual-e5-base")
+question = "how are you doing?"
+model = CrossEncoder("jeffwan/mmarco-mMiniLMv2-L12-H384-v1")
 inputs = [[question, sentence] for sentence in sentences]
 out = model.predict(inputs)
 print("Cross encoder is working!")
