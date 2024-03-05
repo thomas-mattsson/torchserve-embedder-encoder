@@ -5,7 +5,6 @@ my_tokenizer/
 cross_encoder_model_files/
 embedder_model_files/
 model_store/
-config.properties
 *.log
 **/.DS_Store
 testing.py

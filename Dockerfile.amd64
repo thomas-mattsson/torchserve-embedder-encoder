@@ -25,6 +25,7 @@ ADD requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 ADD docker/entrypoint.sh entrypoint.sh
+ADD docker/config.properties config.properties
 ADD scripts/start-torchserve.sh start-torchserve.sh
 
 COPY --from=builder /usr/app/model_store model_store
